@@ -1,0 +1,17 @@
+---
+- name: Check if VSCode is installed
+  shell: dpkg --get-selections | grep ^code | grep -w install
+  register: app
+  ignore_errors: yes
+
+- name: Install VSCode
+  block:
+    - name: Download VSCode
+      get_url:
+        url: https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable
+        dest: "{{ download_dir }}/vscode.deb"
+    - name: Install VSCode
+      apt:
+        deb: "{{ download_dir }}/vscode.deb"
+      become: true
+  when: app.rc == 1

@@ -1,0 +1,9 @@
+---
+# defaults file for vscode-ansible
+download_dir: /tmp
+extensions:
+    - vscoss.vscode-ansible
+    - eamodio.gitlens
+    - ms-vscode.Go
+    - ms-python.python
+    - timonwong.shellcheck

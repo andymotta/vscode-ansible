@@ -1,0 +1,24 @@
+---
+# tasks file for vscode-ansible
+- name: Check if VSCode is installed
+  stat:
+    path: "/Applications/Visual Studio Code.app"
+  register: app
+  
+- name: Install VSCode
+  block:
+    - name: Download VSCode
+      get_url:
+        url: https://vscode-update.azurewebsites.net/latest/darwin/stable
+        dest: "{{ download_dir }}"
+    - name: Install VSCode to Applications
+      unarchive:
+        src: "{{ download_dir }}/VSCode-darwin-stable.zip"
+        dest: /Applications
+    - name: Enable code shell command 
+      file:
+        src: "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+        dest: /usr/local/bin/code
+        state: link
+      become: true
+  when: app.stat.exists == False
