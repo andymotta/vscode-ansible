@@ -4,4 +4,11 @@ download_dir: /tmp
 extensions:
     - vscoss.vscode-ansible
     - eamodio.gitlens
+    - ms-python.python
+    - timonwong.shellcheck
     - k3a.theme-dark-plus-contrast
+    - mauve.terraform
+    - ms-vscode.Go
+    - redhat.vscode-yaml
+    - ivory-lab.jenkinsfile-support
+
