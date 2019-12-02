@@ -11,4 +11,5 @@ extensions:
     - ms-vscode.Go
     - redhat.vscode-yaml
     - ivory-lab.jenkinsfile-support
+    - ms-kubernetes-tools.vscode-kubernetes-tools
 
