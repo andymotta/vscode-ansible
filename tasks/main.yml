@@ -16,3 +16,8 @@
   command: "code --install-extension {{ item }}"
   with_items: "{{ extensions }}"
   when: "'{{ item }}' not in installed_extensions.stdout"
+  
+- name: Remove Unlisted VSCode extensions
+  command: "code --uninstall-extension {{ item }}"
+  with_items: "{{ installed_extensions.stdout_lines }}"
+  when: "'{{ item }}' not in {{ extensions }}"
